@@ -4,7 +4,9 @@ WORKDIR /app
 
 COPY requirements.txt /tmp/
 
-RUN pip install -r /tmp/requirements.txt
+# Update pip and install requirements without cache
+RUN pip install --upgrade pip && \
+    pip install --no-cache-dir -r /tmp/requirements.txt
 
 COPY app/ /app/
 
